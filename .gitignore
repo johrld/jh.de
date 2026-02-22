@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# astro
+dist/
+.astro/
+
+# env files
+.env
+.env.*
+!.env.example
+
+# debug
+npm-debug.log*
+
+# Docker
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'de' } }];
+}
+
+const lang = 'de' as Lang;
+---
+
+<BaseLayout
+  title={`Impressum — ${t(lang, 'site.title')}`}
+  description="Impressum der Website von Johannes Herold"
+  lang={lang}
+>
+  <article class="legal">
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <p>
+      idearockers GmbH<br />
+      Kanalstraße 62<br />
+      23552 Lübeck<br />
+      Deutschland
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>E-Mail: mail[at]idearockers.com</p>
+
+    <h2>Vertreten durch</h2>
+    <p>Johannes Herold (Geschäftsführer)</p>
+
+    <h2>Handelsregister</h2>
+    <p>
+      Eintragung im Handelsregister<br />
+      Registernummer: HRB 22833 HL
+    </p>
+
+    <h2>Umsatzsteuer-ID</h2>
+    <p>
+      Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+      DE292134637
+    </p>
+
+    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <p>
+      Johannes Herold<br />
+      Kanalstraße 62<br />
+      23552 Lübeck
+    </p>
+
+    <h2>Haftungsausschluss</h2>
+
+    <h3>Haftung für Inhalte</h3>
+    <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+    <h3>Haftung für Links</h3>
+    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+    <h3>Urheberrecht</h3>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .legal h2 { font-size: 1.25rem; margin-top: var(--space-lg); }
+  .legal h3 { font-size: 1.1rem; }
+</style>

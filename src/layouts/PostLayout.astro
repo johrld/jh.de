@@ -1,0 +1,282 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from '../i18n/utils';
+import { t } from '../i18n/utils';
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../i18n/config';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, keywords, image, lang, translations, author, tags } = post.data;
+
+const postLang = (lang || 'de') as Lang;
+const formattedDate = formatDate(pubDate, postLang);
+
+const words = post.body?.split(/\s+/).length || 0;
+const readingTime = Math.ceil(words / 200);
+
+// Load author data
+const authorData = await getEntry(author);
+
+const authorName = authorData?.data.name || 'Johannes Herold';
+const authorImage = authorData?.data.image || '/images/johannes-herold.jpg';
+
+// Build translation URLs for language switcher
+const translationUrls: Partial<Record<Lang, string>> = {};
+if (translations) {
+  for (const [tLang, slug] of Object.entries(translations)) {
+    translationUrls[tLang as Lang] = `/${tLang}/blog/${slug}`;
+  }
+}
+
+const siteUrl = import.meta.env.SITE || 'https://www.jh.de';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  author: {
+    '@type': 'Person',
+    name: authorName,
+    ...(authorImage && { image: `${siteUrl}${authorImage}` }),
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Johannes Herold',
+    url: siteUrl,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': Astro.url.href,
+  },
+  ...(image && { image: `${siteUrl}${image}` }),
+  ...(keywords && { keywords: keywords.join(', ') }),
+  wordCount: words,
+  inLanguage: postLang,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  image={image}
+  type="article"
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  lang={postLang}
+  translations={Object.keys(translationUrls).length > 0 ? translationUrls : undefined}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <article class="blog-post">
+    <header class="post-header">
+      <h1>{title}</h1>
+
+      <p class="post-description">{description}</p>
+
+      <div class="author-line">
+        <img src={authorImage} alt={authorName} class="author-avatar" width="32" height="32" />
+        <span class="author-name">{authorName}</span>
+        <span class="author-meta">
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+          <span class="separator"> · </span>
+          <span>{t(postLang, 'blog.readingTime', { minutes: readingTime })}</span>
+        </span>
+      </div>
+    </header>
+
+    {image && (
+      <div class="hero-image">
+        <img src={image} alt={title} />
+      </div>
+    )}
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    {tags && tags.length > 0 && (
+      <div class="post-tags">
+        {tags.map(tag => (
+          <span class="tag"># {tag}</span>
+        ))}
+      </div>
+    )}
+
+    <footer class="post-footer">
+      <a href={`/${postLang}/blog`} class="back-link">&larr; {t(postLang, 'blog.allPosts')}</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .blog-post .post-header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-post h1 {
+    font-size: clamp(1.75rem, 4vw, 2.125rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+  }
+
+  /* Author Line */
+  .blog-post .author-line {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .blog-post .author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .blog-post .author-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .blog-post .author-meta {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .blog-post .post-description {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+
+  /* Hero Image */
+  .blog-post .hero-image {
+    margin-bottom: var(--space-xl);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .blog-post .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Post Content */
+  .blog-post .post-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  .blog-post .post-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .blog-post .post-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--space-lg) 0 var(--space-sm);
+  }
+
+  .blog-post .post-content p {
+    margin-bottom: var(--space-md);
+    color: var(--color-text-secondary);
+  }
+
+  .blog-post .post-content ul {
+    margin-bottom: var(--space-md);
+    padding-left: 0;
+    list-style: none;
+    color: var(--color-text-secondary);
+  }
+
+  .blog-post .post-content ol {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .blog-post .post-content ul li {
+    margin-bottom: var(--space-sm);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .blog-post .post-content ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .blog-post .post-content ol li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .blog-post .post-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-md);
+    margin: var(--space-lg) 0;
+    font-style: italic;
+    color: var(--color-text-light);
+  }
+
+  /* Tags */
+  .blog-post .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px dashed var(--color-border-light);
+  }
+
+  .blog-post .tag {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    letter-spacing: -0.01em;
+  }
+
+  .blog-post .post-footer {
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 2rem;
+    margin-top: 3rem;
+  }
+
+  .blog-post .back-link {
+    font-weight: 500;
+  }
+
+  @media (max-width: 640px) {
+    .blog-post h1 {
+      font-size: 1.75rem;
+    }
+
+    .blog-post .post-description {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

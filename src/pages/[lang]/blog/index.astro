@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostList from '../../../components/PostList.astro';
+import { t } from '../../../i18n/utils';
+import { languages } from '../../../i18n/config';
+import type { Lang } from '../../../i18n/config';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+let posts: any[] = [];
+try {
+  const allPosts = await getCollection('posts');
+  posts = allPosts
+    .filter(post => post.data.lang === lang && !post.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+} catch {
+  // No posts yet
+}
+---
+
+<BaseLayout
+  title={`${t(lang, 'blog.title')} — ${t(lang, 'site.title')}`}
+  description={t(lang, 'blog.description')}
+  lang={lang}
+>
+  <h1>{t(lang, 'blog.title')}</h1>
+  <PostList posts={posts} lang={lang} />
+</BaseLayout>

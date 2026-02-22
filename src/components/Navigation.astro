@@ -1,0 +1,210 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { t } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  lang?: Lang;
+  translations?: Partial<Record<Lang, string>>;
+}
+
+const { lang = 'de', translations } = Astro.props;
+const path = Astro.url.pathname;
+
+const isActivePath = (route: string) => {
+  return path.includes(`/${lang}/${route}`) || path.endsWith(`/${lang}/${route}`);
+};
+---
+
+<header class="site-header">
+  <nav class="nav-container">
+    <a href={`/${lang}`} class="logo">Johannes Herold</a>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href={`/${lang}/blog`} class:list={[{ active: isActivePath('blog') }]}>{t(lang, 'nav.blog')}</a></li>
+        <li><a href={`/${lang}/projects`} class:list={[{ active: isActivePath('projects') }]}>{t(lang, 'nav.projects')}</a></li>
+        <li><a href={`/${lang}/about`} class:list={[{ active: isActivePath('about') }]}>{t(lang, 'nav.about')}</a></li>
+      </ul>
+
+      <div class="nav-extras desktop-only">
+        <ThemeToggle />
+        <LanguageSwitcher lang={lang} translations={translations} />
+      </div>
+    </div>
+
+    <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href={`/${lang}/blog`} class:list={[{ active: isActivePath('blog') }]}>{t(lang, 'nav.blog')}</a>
+    <a href={`/${lang}/projects`} class:list={[{ active: isActivePath('projects') }]}>{t(lang, 'nav.projects')}</a>
+    <a href={`/${lang}/about`} class:list={[{ active: isActivePath('about') }]}>{t(lang, 'nav.about')}</a>
+    <div class="mobile-bottom">
+      <ThemeToggle />
+      <LanguageSwitcher lang={lang} translations={translations} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-bg);
+  }
+
+  .nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .logo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.025em;
+  }
+
+  .logo:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  .nav-links a {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-extras {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .desktop-only { display: flex; }
+
+  .mobile-toggle {
+    display: none;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--color-text);
+    position: relative;
+    transition: background 0.15s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    transition: transform 0.2s ease;
+  }
+
+  .hamburger::before { top: -6px; }
+  .hamburger::after { bottom: -6px; }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger { background: transparent; }
+  .mobile-toggle[aria-expanded="true"] .hamburger::before { transform: translateY(6px) rotate(45deg); }
+  .mobile-toggle[aria-expanded="true"] .hamburger::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    padding: 0.75rem 0;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a.active {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .mobile-bottom {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  @media (max-width: 640px) {
+    .nav-right { display: none; }
+    .mobile-toggle { display: block; }
+    .desktop-only { display: none; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.mobile-toggle');
+  const menu = document.querySelector('.mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', (!expanded).toString());
+    menu?.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-menu > a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu?.classList.remove('open');
+    });
+  });
+</script>

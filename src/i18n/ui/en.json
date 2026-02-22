@@ -1,0 +1,49 @@
+{
+  "site": {
+    "title": "Johannes Herold",
+    "description": "Entrepreneur, AI Investor & Founder. Thoughts on tech, AI and entrepreneurship."
+  },
+  "nav": {
+    "blog": "Blog",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "hero": {
+    "greeting": "Hey, I'm Johannes",
+    "claim": "Creating ventures with clarity, flow and purpose.",
+    "intro": "Entrepreneur & venture builder specialized in AI, SaaS, and hosting. I design and launch products that combine scalable technology, community-driven growth, and human-centered design — always with a focus on simplicity and impact.",
+    "stats": {
+      "years": "30+",
+      "yearsLabel": "Years Experience",
+      "ventures": "6+",
+      "venturesLabel": "Ventures Created",
+      "exits": "1",
+      "exitsLabel": "Company Acquired"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Articles about tech, AI and entrepreneurship",
+    "allPosts": "All articles",
+    "readMore": "Read more",
+    "readingTime": "{minutes} min read",
+    "noPosts": "No articles yet.",
+    "latestPosts": "Latest articles"
+  },
+  "about": {
+    "title": "About",
+    "description": "Entrepreneur, AI investor and founder with 30+ years of experience."
+  },
+  "footer": {
+    "contact": "Contact",
+    "getInTouch": "Get in touch",
+    "getInTouchSubtitle": "Interested in collaborating? Let's talk.",
+    "legal": "Legal",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "copyright": "prompt > code > ship"
+  },
+  "legal": {
+    "backHome": "Back to home"
+  }
+}

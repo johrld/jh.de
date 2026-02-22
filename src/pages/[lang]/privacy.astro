@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }];
+}
+
+const lang = 'en' as Lang;
+---
+
+<BaseLayout
+  title={`Privacy Policy — ${t(lang, 'site.title')}`}
+  description="Privacy policy for Johannes Herold's website"
+  lang={lang}
+>
+  <article class="legal">
+    <h1>Privacy Policy</h1>
+
+    <h2>1. Controller</h2>
+    <p>idearockers GmbH, Kanalstraße 62, 23552 Lübeck, Germany. Contact: mail[at]idearockers.com</p>
+
+    <h2>2. Hosting & server logs</h2>
+    <p>When visiting this website, our hosting provider processes server log files (e.g., IP address in truncated/shortened form, date/time, requested URL, referrer, user agent) to ensure secure operation (Art. 6(1)(f) GDPR). Data is kept for a short period and then deleted or anonymized.</p>
+
+    <h2>3. Cookies</h2>
+    <p>We only use technically necessary cookies as required for operation. Optional cookies (e.g., analytics) are currently not used.</p>
+
+    <h2>4. Contact</h2>
+    <p>If you contact us, we process the data you provide to handle your request (Art. 6(1)(b) or (f) GDPR).</p>
+
+    <h2>5. Recipients</h2>
+    <p>Data is only shared with processors (e.g., hosting) under data processing agreements, or where required by law.</p>
+
+    <h2>6. International transfers</h2>
+    <p>Data is generally not transferred outside the EU/EEA. If exceptionally required, appropriate safeguards are ensured (e.g., EU Standard Contractual Clauses).</p>
+
+    <h2>7. Retention</h2>
+    <p>We retain personal data only as long as necessary for the stated purposes or as required by law, and then delete or anonymize it.</p>
+
+    <h2>8. Your rights</h2>
+    <p>You have rights of access, rectification, erasure, restriction, portability, and objection to processing based on Art. 6(1)(f) GDPR. You may withdraw consent at any time with future effect.</p>
+    <p>To exercise your rights, contact: mail[at]idearockers.com. You may also lodge a complaint with your supervisory authority.</p>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .legal h2 { font-size: 1.25rem; margin-top: var(--space-lg); }
+</style>

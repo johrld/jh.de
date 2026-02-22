@@ -1,0 +1,39 @@
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+import { languages } from '../../../i18n/config';
+import type { Lang } from '../../../i18n/config';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+
+  try {
+    const allPosts = await getCollection('posts');
+
+    for (const lang of Object.keys(languages)) {
+      const langPosts = allPosts.filter(
+        post => post.data.lang === lang && !post.data.draft
+      );
+
+      for (const post of langPosts) {
+        const slug = post.id.replace(/^(de|en)\//, '');
+        paths.push({
+          params: { lang, slug },
+          props: { post },
+        });
+      }
+    }
+  } catch {
+    // No posts yet
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout post={post}>
+  <Content />
+</PostLayout>

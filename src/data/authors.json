@@ -1,0 +1,21 @@
+[
+  {
+    "id": "johannes",
+    "name": "Johannes Herold",
+    "slug": "johannes-herold",
+    "title": {
+      "de": "Unternehmer & AI Investor",
+      "en": "Entrepreneur & AI Investor"
+    },
+    "bio": {
+      "de": "Seriengründer aus Lübeck mit über 30 Jahren Erfahrung. Baut Ventures an der Schnittstelle von AI, Daten und Technologie.",
+      "en": "Serial founder from Lübeck, Germany with 30+ years of experience. Building ventures at the intersection of AI, data and technology."
+    },
+    "image": "/images/johannes-herold.jpg",
+    "social": {
+      "linkedin": "https://www.linkedin.com/in/johannesherold/",
+      "instagram": "https://www.instagram.com/johannesherold/",
+      "email": "mail@idearockers.com"
+    }
+  }
+]

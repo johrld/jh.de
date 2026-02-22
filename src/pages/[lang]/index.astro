@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProfileHeader from '../../components/ProfileHeader.astro';
+import PostList from '../../components/PostList.astro';
+import { t } from '../../i18n/utils';
+import { languages } from '../../i18n/config';
+import type { Lang } from '../../i18n/config';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+let posts: any[] = [];
+try {
+  const allPosts = await getCollection('posts');
+  posts = allPosts
+    .filter(post => post.data.lang === lang && !post.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+} catch {
+  // No posts yet
+}
+---
+
+<BaseLayout
+  title={t(lang, 'site.title')}
+  description={t(lang, 'site.description')}
+  lang={lang}
+  type="website"
+>
+  <ProfileHeader lang={lang} />
+
+  {posts.length > 0 && (
+    <section class="latest-posts">
+      <PostList posts={posts.slice(0, 10)} lang={lang} />
+      {posts.length > 10 && (
+        <a href={`/${lang}/blog`} class="all-posts-link">
+          {t(lang, 'blog.allPosts')} &rarr;
+        </a>
+      )}
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .all-posts-link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+</style>

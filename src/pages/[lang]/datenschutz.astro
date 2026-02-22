@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/utils';
+import type { Lang } from '../../i18n/config';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'de' } }];
+}
+
+const lang = 'de' as Lang;
+---
+
+<BaseLayout
+  title={`Datenschutz — ${t(lang, 'site.title')}`}
+  description="Datenschutzerklärung der Website von Johannes Herold"
+  lang={lang}
+>
+  <article class="legal">
+    <h1>Datenschutzerklärung</h1>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>idearockers GmbH, Kanalstraße 62, 23552 Lübeck, Deutschland. Kontakt: mail[at]idearockers.com</p>
+
+    <h2>2. Hosting & Server-Logfiles</h2>
+    <p>Beim Besuch dieser Website verarbeitet unser Hosting-Anbieter Server-Logfiles (z.B. gekürzte IP-Adresse, Datum/Uhrzeit, aufgerufene URL, Referrer, User-Agent) zur Gewährleistung des sicheren Betriebs (Art. 6 Abs. 1 lit. f DSGVO). Daten werden nach kurzer Zeit gelöscht oder anonymisiert.</p>
+
+    <h2>3. Cookies</h2>
+    <p>Wir verwenden ausschließlich technisch notwendige Cookies. Optionale Cookies (z.B. Analytics) werden derzeit nicht eingesetzt.</p>
+
+    <h2>4. Kontaktaufnahme</h2>
+    <p>Bei Kontaktaufnahme verarbeiten wir die von Ihnen übermittelten Daten zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b oder f DSGVO).</p>
+
+    <h2>5. Empfänger</h2>
+    <p>Daten werden nur an Auftragsverarbeiter (z.B. Hosting) unter Auftragsverarbeitungsverträgen oder bei gesetzlicher Verpflichtung weitergegeben.</p>
+
+    <h2>6. Internationale Übermittlungen</h2>
+    <p>Daten werden grundsätzlich nicht außerhalb der EU/des EWR übermittelt. Falls ausnahmsweise erforderlich, werden geeignete Garantien sichergestellt (z.B. EU-Standardvertragsklauseln).</p>
+
+    <h2>7. Speicherdauer</h2>
+    <p>Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich oder gesetzlich vorgeschrieben ist, und löschen oder anonymisieren sie anschließend.</p>
+
+    <h2>8. Ihre Rechte</h2>
+    <p>Sie haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch gegen die Verarbeitung nach Art. 6 Abs. 1 lit. f DSGVO. Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+    <p>Zur Ausübung Ihrer Rechte wenden Sie sich an: mail[at]idearockers.com. Sie können sich auch bei Ihrer Aufsichtsbehörde beschweren.</p>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .legal h2 { font-size: 1.25rem; margin-top: var(--space-lg); }
+</style>

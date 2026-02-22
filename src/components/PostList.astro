@@ -1,0 +1,92 @@
+---
+import { formatDate, t } from '../i18n/utils';
+import type { Lang } from '../i18n/config';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  lang?: Lang;
+}
+
+const { posts, lang = 'de' } = Astro.props;
+---
+
+{posts.length > 0 ? (
+  <ul class="post-list">
+    {posts.map(post => {
+      const slug = post.id.replace(/^(de|en)\//, '');
+      return (
+        <li class="post-item">
+          <a href={`/${lang}/blog/${slug}`} class="post-link">
+            <time class="post-date" datetime={post.data.pubDate.toISOString()}>
+              {formatDate(post.data.pubDate, lang)}
+            </time>
+            <h3 class="post-title">{post.data.title}</h3>
+            <p class="post-description">{post.data.description}</p>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+) : (
+  <p class="no-posts">{t(lang, 'blog.noPosts')}</p>
+)}
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-item {
+    margin-bottom: 0;
+  }
+
+  .post-link {
+    display: block;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border-light);
+    color: inherit;
+    transition: background 0.1s ease;
+  }
+
+  .post-link:hover {
+    text-decoration: none;
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.375rem;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    transition: color 0.15s ease;
+  }
+
+  .post-link:hover .post-title {
+    color: var(--color-accent);
+  }
+
+  .post-description {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .no-posts {
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: var(--space-xl) 0;
+  }
+</style>
