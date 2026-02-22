@@ -34,6 +34,15 @@ Personal website and blog of Johannes Herold, built with [Astro 5](https://astro
 
 ## Development
 
+### Tooling
+
+- **AI:** [Claude Code](https://claude.com/claude-code)
+- **Editor:** [Cursor](https://cursor.com) (Remote SSH)
+- **Mobile:** [LabIDE](https://github.com/labideapp/labide) (Remote SSH from iPhone)
+- **Containers:** Docker
+- **CDN/DNS:** Cloudflare
+- **Deployment:** Dokploy
+
 Development runs inside Docker on a remote Hetzner dev server, accessed via SSH (Cursor Remote). The dev server is secured behind Cloudflare Tunnel.
 
 ```bash
