@@ -14,20 +14,107 @@ const content = {
   de: {
     headline: 'Über mich',
     bio: [
-      'Ich bin Johannes Herold, Unternehmer und Gründer aus Lübeck. Seit über 30 Jahren baue ich digitale Unternehmen — vom ersten White-Label-Chat-System 1996 bis hin zu AI-getriebenen Ventures heute.',
-      'Mein Fokus liegt auf dem Aufbau von Ökosystemen, die von AI und Daten angetrieben werden. Ich glaube an Technologie, die menschliches Potenzial freisetzt: Systeme, die vereinfachen wie wir arbeiten, uns verbinden und leben — immer mit einem tief menschlichen Design.',
-      'Aktuell baue ich mit meiner Holding idearockers an mehreren Ventures gleichzeitig — wynd (hyperlocale Winddaten), flowboost (AI Content Agents) und breathe (Achtsamkeits-App). Zuvor habe ich checkdomain gegründet und bis zum 8-stelligen Exit skaliert.',
+      "Ich bin Johannes Herold, Tech-Unternehmer aus Lübeck.",
+      "Seit über 30 Jahren baue ich digitale Unternehmen — von Internet-Infrastruktur und Hosting-Systemen bis hin zu AI-getriebenen Plattformen heute.",
+      "Ich denke in Systemen. Ich baue AI-getriebene Plattformen, in denen tiefe Infrastruktur auf klare, nutzbare Produkte trifft.",
+      "Über <a href=\"https://www.idearockers.com\" target=\"_blank\" rel=\"noopener noreferrer\">idearockers</a> baue ich aktuell mehrere Ventures — darunter <a href=\"https://www.wynd.live\" target=\"_blank\" rel=\"noopener noreferrer\">wynd</a> (hyperlokale Winddaten), <a href=\"https://www.flowboost.ai\" target=\"_blank\" rel=\"noopener noreferrer\">flowboost</a> (AI Content Agents) und <a href=\"https://www.breathejourney.com\" target=\"_blank\" rel=\"noopener noreferrer\">breathe</a> (Achtsamkeits-App).",
+      "Zuvor habe ich <a href=\"https://www.checkdomain.de\" target=\"_blank\" rel=\"noopener noreferrer\">checkdomain</a> gegründet und skaliert, das 2019 übernommen wurde.",
+    ],
+    personal: [
+      "🏄 Kitesurfer",
+      "❤️ Vater von zwei Kindern",
+      "⚽ Lebenslanger Fußball-Enthusiast",
+      "🎮 Gamer",
+      "🧬 Interessiert an Longevity und persönlichem Wachstum",
     ],
   },
   en: {
     headline: 'About',
     bio: [
-      "I'm Johannes Herold, entrepreneur and founder based in Lübeck, Germany. For over 30 years I've been building digital businesses — from the first white-label chat system in 1996 to AI-powered ventures today.",
-      "My focus is on building ecosystems powered by AI and data. I believe in technology that unlocks human potential: systems that streamline how we work, connect, and live — while keeping design deeply human.",
-      "Currently I'm building multiple ventures through my holding company idearockers — wynd (hyperlocal wind data), flowboost (AI content agents) and breathe (mindfulness app). Previously I founded and scaled checkdomain to an 8-figure exit.",
+      "I'm Johannes Herold, a tech entrepreneur based in Lübeck, Germany.",
+      "For over 30 years, I've been building digital businesses — from internet infrastructure and hosting systems to AI-driven platforms today.",
+      "I think in systems. I build AI-driven platforms where deep infrastructure meets clear, usable products.",
+      "Through <a href=\"https://www.idearockers.com\" target=\"_blank\" rel=\"noopener noreferrer\">idearockers</a>, I'm currently building ventures including <a href=\"https://www.wynd.live\" target=\"_blank\" rel=\"noopener noreferrer\">wynd</a> (hyperlocal wind data), <a href=\"https://www.flowboost.ai\" target=\"_blank\" rel=\"noopener noreferrer\">flowboost</a> (AI content agents), and <a href=\"https://www.breathejourney.com\" target=\"_blank\" rel=\"noopener noreferrer\">breathe</a> (mindfulness app).",
+      "Previously, I founded and scaled <a href=\"https://www.checkdomain.de\" target=\"_blank\" rel=\"noopener noreferrer\">checkdomain</a>, which was acquired in 2019.",
+    ],
+    personal: [
+      "🏄 Kitesurfer and ocean lover",
+      "❤️ Father of two",
+      "⚽ Lifelong football enthusiast",
+      "🎮 Gamer",
+      "🧬 Interested in longevity and personal growth",
     ],
   },
 };
+
+const timeline = [
+  {
+    period: { de: '2025–heute', en: '2025–today' },
+    title: 'wynd',
+    icon: '<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>',
+    url: 'https://www.wynd.live',
+    description: {
+      de: 'Community-getriebene Winddaten-Plattform für Kitesurfer & Wassersportler – komplett mit AI gebaut.',
+      en: 'Community-driven wind data platform for kitesurfers & watersports – built entirely with AI.',
+    },
+    badge: 'AI-Built',
+  },
+  {
+    period: { de: '2023–heute', en: '2023–today' },
+    title: 'flowboost AI',
+    icon: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
+    url: 'https://www.flowboost.ai',
+    description: {
+      de: 'Enterprise AI Middleware für Content-Automatisierung – hilft Marken, Voice & Kontext kanalübergreifend zu skalieren.',
+      en: 'Enterprise AI middleware for content automation – helping brands scale voice & context across channels.',
+    },
+    badge: 'AI-Native',
+  },
+  {
+    period: { de: '2016–heute', en: '2016–today' },
+    title: 'breathe Journey',
+    icon: '<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.5 9.4c-1.1.8-1.8 2.2-2.3 3.7 2 .4 3.5.4 4.8-.3 1.2-.6 2.3-1.9 3-4.2-2.8-.5-4.4 0-5.5.8z"/>',
+    url: 'https://www.breathejourney.com',
+    description: {
+      de: 'Achtsamkeits-App für bewusste Nutzung und digitales Wohlbefinden. Über 20.000 Downloads und 2M+ Sessions.',
+      en: 'Mindfulness app designed for intentional use and digital wellbeing. Over 20k downloads and 2M+ sessions.',
+    },
+    badge: '2M+ Sessions',
+  },
+  {
+    period: '2021–2023',
+    title: 'finhub',
+    icon: '<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+    url: null,
+    description: {
+      de: 'WealthTech SaaS für High-Net-Worth Individuals zur Analyse, Optimierung & Sharing ihrer Portfolios.',
+      en: 'WealthTech SaaS for high-net-worth individuals to analyze, optimize & share their portfolios.',
+    },
+    badge: 'WealthTech SaaS',
+  },
+  {
+    period: '2001–2019',
+    title: 'checkdomain',
+    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+    url: 'https://www.checkdomain.de',
+    description: {
+      de: 'Gegründet und skaliert als einer der führenden Hosting- & Domain-Provider Deutschlands. 8-stelliger Exit an Dogado (group.ONE).',
+      en: "Founded and scaled one of Germany's leading hosting & domain providers. 8-figure exit to Dogado (group.ONE).",
+    },
+    badge: 'Acquired by group.ONE',
+  },
+  {
+    period: '1996–1998',
+    title: 'chatworld',
+    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    url: null,
+    description: {
+      de: 'Eine der ersten White-Label Chat- & Community-Plattformen in Europa. Genutzt von RTL, Sport1, Ikea & Techniker Krankenkasse.',
+      en: 'One of the first white-label chat & community platforms in Europe. Adopted by RTL, Sport1, Ikea & Techniker Krankenkasse.',
+    },
+    badge: 'First Mover',
+  },
+];
 
 const page = content[lang];
 ---
@@ -40,97 +127,210 @@ const page = content[lang];
   <article class="about">
     <h1>{page.headline}</h1>
 
-    <div class="about-header">
-      <img
-        src="/images/johannes-herold.jpg"
-        alt="Johannes Herold"
-        class="about-photo"
-        width="140"
-        height="140"
-      />
-      <div class="about-bio">
-        {page.bio.map(paragraph => (
-          <p>{paragraph}</p>
-        ))}
-      </div>
+    <img
+      src="/images/johannes-herold-about.jpg"
+      alt="Johannes Herold"
+      class="about-photo"
+    />
+    <div class="about-bio">
+      {page.bio.map(paragraph => (
+        <p set:html={paragraph} />
+      ))}
     </div>
 
-    <div class="about-stats">
-      <div class="stat">
-        <span class="stat-number">{t(lang, 'hero.stats.years')}</span>
-        <span class="stat-label">{t(lang, 'hero.stats.yearsLabel')}</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">{t(lang, 'hero.stats.ventures')}</span>
-        <span class="stat-label">{t(lang, 'hero.stats.venturesLabel')}</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">{t(lang, 'hero.stats.exits')}</span>
-        <span class="stat-label">{t(lang, 'hero.stats.exitsLabel')}</span>
-      </div>
+    <div class="about-personal">
+      <h2>{lang === 'de' ? 'Abseits der Technologie' : 'Outside of technology'}</h2>
+      <ul>
+        {page.personal.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
     </div>
+
+    <hr class="section-divider" />
+
+    <section class="timeline-section">
+      <h2>{lang === 'de' ? 'Track Record' : 'Track Record'}</h2>
+      <div class="timeline">
+        {timeline.map(item => (
+          <div class="timeline-item">
+            <div class="timeline-dot-col">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                  <Fragment set:html={item.icon} />
+                </svg>
+              </div>
+              <div class="timeline-line" />
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">
+                <span class="timeline-period">{typeof item.period === 'string' ? item.period : item.period[lang]}</span>
+                <span class="timeline-sep"> · </span>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                ) : (
+                  <span>{item.title}</span>
+                )}
+              </h3>
+              <p class="timeline-description">{typeof item.description === 'string' ? item.description : item.description[lang]}</p>
+              <span class="timeline-badge">{item.badge}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
   </article>
 </BaseLayout>
 
 <style>
-  .about-header {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-lg);
+  .about-photo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-bio {
     margin-bottom: var(--space-2xl);
   }
 
-  .about-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
   .about-bio p {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     line-height: 1.75;
     color: var(--color-text-secondary);
   }
 
-  .about-stats {
-    display: flex;
-    gap: 2.5rem;
-    justify-content: center;
-    margin-bottom: var(--space-2xl);
-    padding: var(--space-lg);
-    background: var(--color-bg-subtle);
-    border-radius: 12px;
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0 0 var(--space-2xl);
   }
 
-  .stat {
+  .timeline-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .timeline-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .timeline-dot-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.125rem;
   }
 
-  .stat-number {
-    font-size: 1.5rem;
-    font-weight: 800;
+  .timeline-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .timeline-line {
+    width: 1px;
+    flex: 1;
+    background: var(--color-border);
+    margin-top: 0.5rem;
+  }
+
+  .timeline-item:last-child .timeline-line {
+    display: none;
+  }
+
+  .timeline-content {
+    padding-bottom: 2rem;
+  }
+
+  .timeline-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.75;
     color: var(--color-text);
-    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
   }
 
-  .stat-label {
-    font-size: 0.75rem;
+  .timeline-title a {
+    color: var(--color-text);
+    transition: color 0.15s ease;
+  }
+
+  .timeline-title a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .timeline-period {
     color: var(--color-text-light);
-    text-align: center;
-    line-height: 1.3;
+    font-weight: 400;
   }
 
-  @media (max-width: 640px) {
-    .about-header {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  .timeline-sep {
+    color: var(--color-text-muted);
   }
+
+  .timeline-description {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--color-accent);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .about-personal {
+    margin-bottom: var(--space-2xl);
+    padding: 0;
+  }
+
+  .about-personal h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-personal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .about-personal li {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+  }
+
+  .about-personal li::before {
+    content: none;
+  }
+
+
 </style>
