@@ -8,10 +8,10 @@ services:
     environment:
       - NODE_ENV=development
       - ASTRO_TELEMETRY_DISABLED=1
-      - SITE_URL=${JH_APP_URL_DEV:-https://jh.ixr.dev}
+      - SITE_URL=${SITE_URL_DEV:-https://jh.ixr.dev}
     volumes:
       - .:/app
       - /app/node_modules
     ports:
-      - "${JH_DEV_PORT:-6201}:3000"
+      - "${DEV_PORT:-6201}:3000"
     restart: unless-stopped

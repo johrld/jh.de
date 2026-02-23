@@ -4,11 +4,11 @@ services:
       context: .
       dockerfile: dockerfile
       args:
-        - SITE_URL=${JH_APP_URL_PROD:-https://www.jh.de}
+        - SITE_URL=${SITE_URL_PROD:-https://www.jh.de}
     environment:
       - NODE_ENV=production
     ports:
-      - 3000
+      - "${PROD_PORT:-3000}:3000"
     restart: always
     networks:
       - dokploy-network
