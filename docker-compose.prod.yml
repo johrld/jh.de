@@ -1,5 +1,5 @@
 services:
-  jh-de:
+  jh:
     build:
       context: .
       dockerfile: dockerfile
