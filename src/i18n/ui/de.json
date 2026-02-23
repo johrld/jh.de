@@ -1,7 +1,8 @@
 {
   "site": {
-    "title": "Johannes Herold",
-    "description": "Unternehmer, AI Investor & Gründer. Gedanken zu Tech, AI und Unternehmertum."
+    "title": "Johannes Herold — Unternehmer & AI Investor",
+    "titleShort": "Johannes Herold",
+    "description": "Unternehmer und AI Investor mit über 30 Jahren Erfahrung. Gründer von wynd, flowboost, breathe und checkdomain (übernommen von group.ONE). Baut AI-getriebene Systeme, die menschliches Potenzial verstärken."
   },
   "nav": {
     "blog": "Blog",
@@ -32,7 +33,7 @@
   },
   "about": {
     "title": "Über mich",
-    "description": "Unternehmer, AI Investor und Gründer mit über 30 Jahren Erfahrung."
+    "description": "Tech-Unternehmer aus Lübeck. Baut End-to-End-Systeme von Infrastruktur bis zu AI-getriebenen Produkten seit über 30 Jahren."
   },
   "footer": {
     "contact": "Kontakt",

@@ -30,9 +30,10 @@ const {
   translations,
 } = Astro.props;
 
-const canonicalUrl = Astro.url.href;
 const siteName = 'Johannes Herold';
 const siteUrl = import.meta.env.SITE || 'https://www.jh.de';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = image ? new URL(image, siteUrl).href : new URL('/images/og-default.jpg', siteUrl).href;
 
 const getPathWithoutLang = (path: string): string => {
   for (const langCode of Object.keys(languages)) {
@@ -58,16 +59,14 @@ const hreflangUrls = Object.keys(languages).map(langCode => ({
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <title>{title}</title>
-    <meta name="title" content={title} />
     <meta name="description" content={description} />
-    {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
     {author && <meta name="author" content={author} />}
     <link rel="canonical" href={canonicalUrl} />
 
     {hreflangUrls.map(({ lang: hrefLang, url }) => (
       <link rel="alternate" hreflang={hrefLang} href={url} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/de${basePath === '/' ? '' : basePath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en${basePath === '/' ? '' : basePath}`} />
 
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
@@ -75,15 +74,45 @@ const hreflangUrls = Object.keys(languages).map(langCode => ({
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_US'} />
-    {image && <meta property="og:image" content={new URL(image, Astro.site).href} />}
+    <meta property="og:locale:alternate" content={lang === 'de' ? 'en_US' : 'de_DE'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
 
-    <meta property="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="Johannes Herold, entrepreneur, AI investor, startup founder, SaaS, checkdomain, wynd, flowboost, breathe, idearockers" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Johannes Herold",
+      "url": siteUrl,
+      "image": new URL('/images/johannes-herold.jpg', siteUrl).href,
+      "jobTitle": "Tech Entrepreneur & AI Investor",
+      "description": description,
+      "address": { "@type": "PostalAddress", "addressLocality": "Lübeck", "addressCountry": "DE" },
+      "sameAs": [
+        "https://github.com/johrld",
+        "https://www.linkedin.com/in/johannesherold/",
+        "https://x.com/johrld",
+        "https://www.instagram.com/johannesherold/"
+      ],
+      "knowsAbout": ["AI", "SaaS", "Infrastructure", "Product Development", "Entrepreneurship"],
+      "founder": [
+        { "@type": "Organization", "name": "idearockers", "url": "https://www.idearockers.com" },
+        { "@type": "Organization", "name": "checkdomain", "url": "https://www.checkdomain.de" },
+        { "@type": "Organization", "name": "wynd", "url": "https://www.wynd.live" },
+        { "@type": "Organization", "name": "flowboost", "url": "https://www.flowboost.ai" },
+        { "@type": "Organization", "name": "breathe", "url": "https://www.breathejourney.com" }
+      ]
+    })} />
 
     <style is:inline>
       html[data-theme="dark"] {
