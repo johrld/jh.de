@@ -7,8 +7,8 @@ services:
         - SITE_URL=${SITE_URL_PROD:-https://www.jh.de}
     environment:
       - NODE_ENV=production
-    ports:
-      - 3000
+    expose:
+      - "3000"
     restart: always
     networks:
       - dokploy-network
