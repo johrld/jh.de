@@ -165,8 +165,13 @@ const isActivePath = (route: string) => {
   .mobile-menu a {
     padding: 0.75rem 0;
     color: var(--color-text-secondary);
+    font-size: 1.0625rem;
     font-weight: 500;
     border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .mobile-menu a:last-of-type {
+    border-bottom: none;
   }
 
   .mobile-menu a:hover,
