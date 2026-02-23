@@ -14,14 +14,10 @@ const content = {
   de: {
     headline: 'Projekte',
     subtitle: 'Was ich aktuell baue und skaliere — mit Fokus auf AI, Community und Human-Centered Design.',
-    trackRecordTitle: 'Track Record',
-    trackRecordSubtitle: 'Mein Weg über 30 Jahre Ventures — von frühen Internet-Communities bis zu AI-getriebenen Plattformen.',
   },
   en: {
     headline: 'Projects',
     subtitle: "What I'm currently building and scaling — with a focus on AI, community and human-centered design.",
-    trackRecordTitle: 'Track Record',
-    trackRecordSubtitle: 'My journey across 30 years of building ventures — from early internet communities to AI-driven platforms.',
   },
 };
 
@@ -88,80 +84,12 @@ const projects = [
   },
 ];
 
-const timeline = [
-  {
-    period: { de: '2025–heute', en: '2025–today' },
-    title: 'wynd',
-    icon: '<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>',
-    url: 'https://www.wynd.live',
-    description: {
-      de: 'Community-getriebene Winddaten-Plattform für Kitesurfer & Wassersportler – komplett mit AI gebaut. Hyperlocale Stationen, Echtzeit-Forecasts & eine schnell wachsende Community.',
-      en: 'Community-driven wind data platform for kitesurfers & watersports – built entirely with AI. Hyperlocal stations, real-time forecasts & a fast-growing community.',
-    },
-    badge: 'AI-Built',
-  },
-  {
-    period: { de: '2023–heute', en: '2023–today' },
-    title: 'flowboost AI',
-    icon: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
-    url: 'https://www.flowboost.ai',
-    description: {
-      de: 'Enterprise AI Middleware für Content-Automatisierung – hilft Marken, Voice & Kontext kanalübergreifend zu skalieren.',
-      en: 'Enterprise AI middleware for content automation – helping brands scale voice & context across channels.',
-    },
-    badge: 'AI-Native',
-  },
-  {
-    period: { de: '2016–heute', en: '2016–today' },
-    title: 'breathe Journey',
-    icon: '<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.5 9.4c-1.1.8-1.8 2.2-2.3 3.7 2 .4 3.5.4 4.8-.3 1.2-.6 2.3-1.9 3-4.2-2.8-.5-4.4 0-5.5.8z"/>',
-    url: 'https://www.breathejourney.com',
-    description: {
-      de: 'Achtsamkeits-App für bewusste Nutzung und digitales Wohlbefinden. Über 93.000 Downloads und 10M+ Sessions.',
-      en: 'Mindfulness app designed for intentional use and digital wellbeing. Over 93k downloads and 10M+ sessions.',
-    },
-    badge: '10M+ Sessions',
-  },
-  {
-    period: '2021–2023',
-    title: 'finhub',
-    icon: '<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
-    url: null,
-    description: {
-      de: 'WealthTech SaaS für High-Net-Worth Individuals zur Analyse, Optimierung & Sharing ihrer Portfolios.',
-      en: 'WealthTech SaaS for high-net-worth individuals to analyze, optimize & share their portfolios.',
-    },
-    badge: 'WealthTech SaaS',
-  },
-  {
-    period: '2001–2019',
-    title: 'checkdomain',
-    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
-    url: 'https://www.checkdomain.de',
-    description: {
-      de: 'Gegründet und skaliert als einer der führenden Hosting- & Domain-Provider Deutschlands. 8-stelliger Exit an Dogado (group.ONE).',
-      en: "Founded and scaled one of Germany's leading hosting & domain providers. 8-figure exit to Dogado (group.ONE).",
-    },
-    badge: 'Acquired by group.ONE',
-  },
-  {
-    period: '1996–1998',
-    title: 'chatworld',
-    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-    url: null,
-    description: {
-      de: 'Eine der ersten White-Label Chat- & Community-Plattformen in Europa. Genutzt von RTL, Sport1, Ikea & Techniker Krankenkasse.',
-      en: 'One of the first white-label chat & community platforms in Europe. Adopted by RTL, Sport1, Ikea & Techniker Krankenkasse.',
-    },
-    badge: 'First Mover',
-  },
-];
 
 const page = content[lang];
 ---
 
 <BaseLayout
-  title={`${page.headline} — ${t(lang, 'site.title')}`}
+  title={`${page.headline} — ${t(lang, 'site.titleShort')}`}
   description={page.subtitle}
   lang={lang}
 >
@@ -202,41 +130,6 @@ const page = content[lang];
       </div>
     </section>
 
-    <!-- Track Record Section -->
-    <section class="timeline-section">
-      <div class="section-header">
-        <h2>{page.trackRecordTitle}</h2>
-        <p class="section-subtitle">{page.trackRecordSubtitle}</p>
-      </div>
-
-      <div class="timeline">
-        {timeline.map(item => (
-          <div class="timeline-item">
-            <div class="timeline-dot-col">
-              <div class="timeline-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                  <Fragment set:html={item.icon} />
-                </svg>
-              </div>
-              <div class="timeline-line" />
-            </div>
-            <div class="timeline-content">
-              <h3 class="timeline-title">
-                <span class="timeline-period">{typeof item.period === 'string' ? item.period : item.period[lang]}</span>
-                <span class="timeline-sep"> · </span>
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                ) : (
-                  <span>{item.title}</span>
-                )}
-              </h3>
-              <p class="timeline-description">{typeof item.description === 'string' ? item.description : item.description[lang]}</p>
-              <span class="timeline-badge">{item.badge}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
   </article>
 </BaseLayout>
 
@@ -364,119 +257,6 @@ const page = content[lang];
   .dot--blue { background: #3b82f6; }
   .dot--purple { background: #8b5cf6; }
   .dot--emerald { background: #10b981; }
-
-  /* Section Headers */
-  .section-header {
-    margin-bottom: var(--space-lg);
-  }
-
-  .section-header h2 {
-    font-size: 1.75rem;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-subtitle {
-    color: var(--color-text-light);
-    font-size: 1.0625rem;
-    margin: 0;
-  }
-
-  /* Timeline */
-  .timeline-section {
-    margin-bottom: var(--space-xl);
-  }
-
-  .timeline-item {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .timeline-dot-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .timeline-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    flex-shrink: 0;
-  }
-
-  .timeline-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--color-accent-light);
-    color: var(--color-accent);
-    flex-shrink: 0;
-  }
-
-  .timeline-line {
-    width: 1px;
-    flex: 1;
-    background: var(--color-border);
-    margin-top: 0.5rem;
-  }
-
-  .timeline-item:last-child .timeline-line {
-    display: none;
-  }
-
-  .timeline-content {
-    padding-bottom: 2rem;
-  }
-
-  .timeline-title {
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.75;
-    color: var(--color-text);
-    margin: 0 0 0.5rem;
-  }
-
-  .timeline-title a {
-    color: var(--color-text);
-    transition: color 0.15s ease;
-  }
-
-  .timeline-title a:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .timeline-period {
-    color: var(--color-text-light);
-    font-weight: 400;
-  }
-
-  .timeline-sep {
-    color: var(--color-text-muted);
-  }
-
-  .timeline-description {
-    font-size: 1.0625rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-
-  .timeline-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: rgba(37, 99, 235, 0.06);
-    color: var(--color-accent);
-    border: 1px solid rgba(37, 99, 235, 0.15);
-    border-radius: 999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
 
   /* Responsive */
   @media (max-width: 640px) {

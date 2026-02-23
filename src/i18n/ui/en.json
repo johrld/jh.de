@@ -1,7 +1,8 @@
 {
   "site": {
-    "title": "Johannes Herold",
-    "description": "Entrepreneur, AI Investor & Founder. Thoughts on tech, AI and entrepreneurship."
+    "title": "Johannes Herold — Entrepreneur & AI Investor",
+    "titleShort": "Johannes Herold",
+    "description": "Entrepreneur and AI investor with 30+ years experience. Creator of wynd, flowboost, breathe, and checkdomain (acquired by group.ONE). Building AI-powered systems that amplify human potential."
   },
   "nav": {
     "blog": "Blog",
@@ -11,7 +12,7 @@
   "hero": {
     "greeting": "Hey, I'm Johannes",
     "claim": "Creating ventures with clarity, flow and purpose.",
-    "intro": "Entrepreneur & venture builder specialized in AI, SaaS, and hosting. I design and launch products that combine scalable technology, community-driven growth, and human-centered design — always with a focus on simplicity and impact.",
+    "intro": "I build digital platforms and AI-driven systems designed for clarity, scale, and long-term impact. Founder of checkdomain. Tech entrepreneur for over 30 years.",
     "stats": {
       "years": "30+",
       "yearsLabel": "Years Experience",
@@ -32,7 +33,7 @@
   },
   "about": {
     "title": "About",
-    "description": "Entrepreneur, AI investor and founder with 30+ years of experience."
+    "description": "Tech entrepreneur based in Lübeck, Germany. Building end-to-end systems from infrastructure to AI-driven products for over 30 years."
   },
   "footer": {
     "contact": "Contact",

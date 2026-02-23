@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   i18n: {
     locales: ['de', 'en'],
-    defaultLocale: 'de',
+    defaultLocale: 'en',
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: true,
