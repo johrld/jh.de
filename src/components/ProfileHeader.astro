@@ -7,6 +7,10 @@ interface Props {
 }
 
 const { lang = 'de' } = Astro.props;
+
+const typewriterWords = lang === 'de'
+  ? ["Hey, ich bin Johannes", "Ich helfe Menschen abzuschalten.", "Ich baue Produkte mit KI.", "Gutes Design verändert alles.", "Ich bin Kitesurfer. 🪁"]
+  : ["Hey, I'm Johannes", "I help people switch off.", "I build with AI.", "I design for humans.", "I kitesurf. 🪁"];
 ---
 
 <section class="profile-header">
@@ -20,10 +24,10 @@ const { lang = 'de' } = Astro.props;
 
   <h1 class="profile-greeting">
     <span class="typing-indicator"><span></span><span></span><span></span></span>
-    <span class="typewriter" data-words={JSON.stringify(["Hey, I'm Johannes", "I build systems", "I design for clarity", "AI-native by default"])}></span>
+    <span class="typewriter" data-words={JSON.stringify(typewriterWords)}></span>
   </h1>
 
-  <p class="profile-intro">{t(lang, 'hero.intro').replace('\n', ' ')}</p>
+  <p class="profile-intro" set:html={t(lang, 'hero.intro').replace(/\n/g, '<br>')} />
 
   <div class="profile-social">
     <a href="https://github.com/johrld" target="_blank" rel="noopener" aria-label="GitHub">

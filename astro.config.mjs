@@ -2,13 +2,13 @@
 import { defineConfig } from 'astro/config';
 
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+
 
 const siteUrl = process.env.SITE_URL || 'https://www.jh.de';
 
 export default defineConfig({
   site: siteUrl,
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx()],
   i18n: {
     locales: ['de', 'en'],
     defaultLocale: 'en',
