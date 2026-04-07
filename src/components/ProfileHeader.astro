@@ -9,8 +9,8 @@ interface Props {
 const { lang = 'de' } = Astro.props;
 
 const typewriterWords = lang === 'de'
-  ? ["Hey, ich bin Johannes", "Ich helfe Menschen abzuschalten.", "Ich baue Produkte mit KI.", "Gutes Design verändert alles.", "Ich bin Kitesurfer. 🪁"]
-  : ["Hey, I'm Johannes", "I help people switch off.", "I build with AI.", "I design for humans.", "I kitesurf. 🪁"];
+  ? ["Hey, ich bin Johannes", "Ich helfe beim Abschalten.", "Ich baue mit KI.", "Ich liebe gutes Design.", "Kitesurfer. 🪁"]
+  : ["Hey, I'm Johannes", "I help people unplug.", "I build with AI.", "I love good design.", "I ride the wind. 🪁"];
 ---
 
 <section class="profile-header">
@@ -72,6 +72,7 @@ const typewriterWords = lang === 'de'
     visibility: hidden;
     align-items: center;
     gap: 0.625rem;
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-text);
