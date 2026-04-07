@@ -12,7 +12,7 @@
   "hero": {
     "greeting": "Hey, I'm Johannes",
     "claim": "Creating ventures with clarity, flow and purpose.",
-    "intro": "I built checkdomain for 18 years. Sold it.\n\nNow I build breathe - a meditation app\nfor people who think they have no time\nfor it.\n\nAnd flowboost - an open-source agentic\ncontent engine I built to run breathe.",
+    "intro": "I built checkdomain for 18 years. Sold it.\nNow I build breathe - a meditation app\nfor people who think they have no time for it.\n\nAnd flowboost - an open-source agentic\ncontent engine I built to run breathe.",
     "stats": {
       "years": "30+",
       "yearsLabel": "Years Experience",

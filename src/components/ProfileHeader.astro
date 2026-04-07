@@ -9,8 +9,8 @@ interface Props {
 const { lang = 'de' } = Astro.props;
 
 const typewriterWords = lang === 'de'
-  ? ["Hey, ich bin Johannes", "Ich helfe beim Abschalten.", "Ich baue mit KI.", "Ich liebe gutes Design.", "Kitesurfer. 🪁"]
-  : ["Hey, I'm Johannes", "I help people unplug.", "I build with AI.", "I love good design.", "I ride the wind. 🪁"];
+  ? ["Hey, I'm Johannes", "I am deep in AI", "On a journey to myself", "I love good design", "I ride the wind 🪁"]
+  : ["Hey, I'm Johannes", "I am deep in AI", "On a journey to myself", "I love good design", "I ride the wind 🪁"];
 ---
 
 <section class="profile-header">
@@ -22,7 +22,7 @@ const typewriterWords = lang === 'de'
     height="160"
   />
 
-  <h1 class="profile-greeting">
+  <h1 class="profile-ticker">
     <span class="typing-indicator"><span></span><span></span><span></span></span>
     <span class="typewriter" data-words={JSON.stringify(typewriterWords)}></span>
   </h1>
@@ -68,6 +68,13 @@ const typewriterWords = lang === 'de'
   }
 
   .profile-greeting {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.5rem;
+    font-weight: 400;
+  }
+
+  .profile-ticker {
     display: inline-flex;
     visibility: hidden;
     align-items: center;
@@ -146,7 +153,6 @@ const typewriterWords = lang === 'de'
     color: var(--color-text);
     text-decoration: none;
   }
-
 </style>
 
 <script>
@@ -154,8 +160,7 @@ const typewriterWords = lang === 'de'
     const words = JSON.parse(el.dataset.words || '[]');
     if (!words.length) return;
 
-    // Fix badge width based on widest word (pixel measurement)
-    const badge = el.closest('.profile-greeting');
+    const badge = el.closest('.profile-ticker');
     let maxBadgeWidth = 0;
     words.forEach(w => {
       el.textContent = w;
