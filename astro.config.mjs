@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
 
-const siteUrl = process.env.SITE_URL || 'https://www.jh.de';
+const siteUrl = process.env.SITE_URL || 'https://jh.de';
 
 export default defineConfig({
   site: siteUrl,
